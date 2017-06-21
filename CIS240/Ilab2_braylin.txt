@@ -1,0 +1,99 @@
+// CIS.cpp : main project file.
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class dayOfTheWeek
+{
+public:
+	void setDay(string " ");
+	void getDay(string " "&);
+	void printDay() const;
+	void incrementDay();
+	void previousDay();
+	void addMoreDay();
+
+private:
+	string day[7] ={"sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"};
+};
+
+int main()
+{
+	date myDate;
+	date yourDate;
+
+	string day[7] ={"sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"};
+
+	myDate.setDay(day[1]);
+
+	cout << "myDate: ";
+	myDate.printday();
+	cout << endl;
+
+	cout << "yourDate: ";
+	yourDate.printDay();
+	cout << endl;
+
+	yourDate.setDay(day[4]);
+	cout << " after setting, yourDate: ";
+	yourDate.printDay();
+	cout << endl;
+
+	myDate.incrementDay();
+
+	cout << "after incrementing myDate by "
+		 << "one day, myDate: ";
+	myDate.printDay();
+	cout << endl;
+
+	myDate.previousDay();
+
+	cout << "after decreasing myDate by "
+		 << "1 day, myDate: ";
+	myDate.printDay();
+	cout << endl;
+
+
+
+	return 0;
+}
+
+void dayOfTheWeek::setDay (string dy[""])
+{
+	if( [0] <= dy[""] && dy[""] <= [7])
+		day[""] = dy["];
+	else
+	day[""] = [0];
+}
+
+void dayOfTheWeek::getDay (string& dy[""]) const
+
+{
+	dy[""] = day[""]
+}
+
+void dayOfTheWeek::printDay() const
+{
+	cout << day[""] << endl;
+}
+
+void dayOfTheWeek::incrementDay()
+{
+	day[""]++;
+		if (day[""] > 7)
+		{
+			day[""] = 0;
+		}
+}
+
+void dayOfTheWeek::previousDay()
+{
+	day[""]--;
+		if (day < 0)
+		{
+			day[""] = 7
+		}
+}

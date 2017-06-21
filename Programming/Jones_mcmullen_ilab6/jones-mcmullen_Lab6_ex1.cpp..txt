@@ -1,0 +1,114 @@
+/* Specification:
+First Name Last Name  
+Lab 6 Exercise 1
+This program does array functions */
+
+
+#include <iostream> 
+
+using namespace std;  
+
+class ArrayClass {
+      private:
+           int *theArray;
+           int theArraySize;
+
+      public:
+             ArrayClass(int [], int);
+             int sum(void);
+             int countNmbrsBigger(int);
+             int average(void);
+             int high(void);
+             int low(void);
+             int find(int);
+};
+
+int main()
+{
+	const int size = 10;
+	int myArray[size] = {34, 15, 61, 96, 6, 2, 21, 12, 59, 81};
+	ArrayClass someArray(myArray, size);
+	cout << "sum: " << someArray.sum() << endl;
+	cout << "average: " << someArray.average() << endl;
+	cout << "high: " << someArray.high() << endl;
+	cout << "low: " << someArray.low() << endl;
+	cout << "find: " << someArray.find(1) << endl;
+	cout << "numbers bigger: " << someArray.countNmbrsBigger(1) << endl;
+	cout << endl << endl;
+
+
+	return 0;
+}
+
+ArrayClass::ArrayClass(int anArray[], int ArraySize){
+      //constructor
+      theArray = anArray;
+      theArraySize = ArraySize;
+}  
+
+int ArrayClass::low(void){
+      //find the lowest value in the array
+      int lowValue = theArray[0];
+      for (int i = 0; i < theArraySize; i++){
+            if (theArray[i] < lowValue){
+                  lowValue = theArray[i];
+            }
+      }
+      return lowValue;
+}
+
+int ArrayClass::sum(void)
+{
+	int total = 0;
+      for (int i = 0; i < theArraySize; i++){
+            total = total + theArray[i]; 
+      }
+      return total;
+}
+
+int ArrayClass::countNmbrsBigger(int number)
+{
+	int count = 0;
+	
+	cout << "enter number";
+	cin >> number;
+
+	for (int i = 0; i < theArraySize; i++){
+		if (theArray[i] > number)
+		count = count + 1;
+	}
+		return count;
+}
+int ArrayClass::average(void)
+{
+	int averageNum = 0;
+
+	averageNum = sum() / theArraySize;
+		return averageNum;
+}
+int ArrayClass::high(void)
+{
+	int highValue = theArray[0];
+      for (int i = 0; i > theArraySize; i++){
+            if (theArray[i] > highValue){
+                  highValue = theArray[i];
+            }
+      }
+      return highValue;
+}
+int ArrayClass::find(int number)
+{
+	number = 0;
+	cout << "enter number";
+	cin >> number;
+
+		for (int i = 0; i > theArraySize; i++){
+			if (theArray[i] == number){
+				return theArray[i];
+			}
+			if (theArray[i] -= number){
+
+	return -1;
+			}
+		}
+}

@@ -1,0 +1,41 @@
+/* Specification:
+First Name Last Name  
+Lab 2 Exercise 1
+This program  gives the price of pens  */
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	double pen = 0.0;
+	double price = 0.0;
+
+	//enter input data
+	cout << "Enter pen quantity\n: ";
+	cin >> pen;
+	
+	if (pen > 0 && pen < 50)
+		price = pen * .50;
+	//end if
+
+	if (pen >= 51 && pen <= 100)
+		price = pen * .48;
+	//end if
+
+	if (pen >= 101 && pen <= 499)
+		price = pen * .45;
+	//end if
+
+	if (pen >= 500)
+		price = pen * .42;
+	//end if
+
+	//display price
+	cout << "the price of your pen(s) is/are $" << price << endl;
+
+
+return 0;
+
+}

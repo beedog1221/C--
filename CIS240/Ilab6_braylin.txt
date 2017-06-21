@@ -1,0 +1,112 @@
+// CIS.cpp : main project file.
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class System
+{
+public:
+	System();
+	~System();
+	System(string, string);
+	virtual void displaySys(); // virtual function
+
+protected:
+	string color;
+	string brand;
+	string *testSys;
+};
+
+System::System()
+{
+	color = "";
+	brand = "";
+	testSys = new string("Test");
+}
+
+System::~System()
+{
+	delete testSys;
+}
+
+System::System(string myColor, string myBrand)
+{
+	color = myColor;
+	brand = myBrand;
+	testSys = new string("Test");
+}
+
+void System::displaySys()
+{
+	cout << "// Xbox \\";
+
+	cout << "system color: " << myColor << endl;
+
+	cout << "system brand: " << myBrand << endl;
+}
+
+class Xbox: public System
+{
+public: 
+	Xbox();
+	Xbox(string, string, string, string);
+	void displaySys();
+
+protected:
+	string type;
+	string releaseDate;
+};
+
+Xbox::Xbox() : System()
+{
+	type = "";
+	releaseDate = "";
+}
+
+Xbox::Xbox(string myColor, myBrand, myType, myReDate) : System(string myColor, string myBrand)
+{
+	type = myType;
+	releaseDate = myReDate;
+}
+
+void Xbox::displaySys()
+{
+	string tmpString;
+	System::displaySys();
+	cout << "system type: " << myType << endl;
+	cout << "release date: " << myReDate << endl;
+}
+
+void produceOutput(System &in)
+{
+	in.displaySys();
+}
+
+int main()
+{
+	string color = "black";
+	string brand = "Microsoft";
+
+	string sysColor = "white";
+	string sysBrand = "Microsoft";
+	string sysType = "360";
+	string sysReDate = "11/22/2005";
+
+	System xbox1(color, brand);
+	Xbox xbox2(sysColor, sysBrand, sysType, sysReDate)
+
+	cout << " +++ Base Class Test +++\n\n";
+
+	produceOutput(xbox1);
+
+	cout << "\n\n\n+++ Derived Class Test +++\n\n";
+
+	produceOutput(xbox2);
+
+	cout << endl << endl;
+
+	return 0;
+}

@@ -1,0 +1,4 @@
+# Compile the tests
+add_executable(UnitTest_EntityManager)
+
+add_test(EntityManagerUnitTest EntityManagerUnitTest)

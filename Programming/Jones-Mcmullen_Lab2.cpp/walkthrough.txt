@@ -1,0 +1,74 @@
+//specification: this program accepts a the radius of a circle and computes a the diameter
+//circumference and Area and displays whichever value the user selects from a menu.
+//This is a demonstration program to highlight the core concepts of this week's lecture 
+#include <iostream>
+
+using namespace std;
+
+namespace circle{
+       const double PI = 3.1415;
+     enum menuOptions {Exit, Circum, Diameter, Area};
+}
+
+int main (){
+         //ask the user for a circle's radius
+       double userRadius = 0;
+       cout << endl << "Welcome to the Circle Calculator!\n";
+       cout << endl << "Enter a Radius: ";
+       cin >> userRadius;
+       cout << endl << endl;
+
+        //ask the user for his desired calculation
+        int usersChoice = 0;
+
+        cout << "Choose a Calculation Option:\n\n";
+        cout << circle::Circum << " - Circumference\n";
+        cout << circle::Diameter << " - Diameter\n";
+        cout << circle::Area << " - Area\n";
+        cout << circle::Exit << " - Exit\n";
+        cout << "Enter a number: ";
+        cin >> usersChoice;
+
+        if (usersChoice < 0 || usersChoice > 3){
+                cout << endl << "Invalid choice - program terminated\n\n";
+        }
+      else {
+            //perform calculations
+                struct circleType {double radius; double area; double diameter; double circum;};
+                circleType myCircle;
+                myCircle.radius = userRadius;
+                myCircle.diameter = myCircle.radius * 2; //radius * 2
+                myCircle.circum = myCircle.diameter * circle::PI; // 2 * radius * pi
+                myCircle.area = myCircle.radius * myCircle.radius * circle::PI ; // radius * radius * pi
+               switch (usersChoice) {
+                           case circle::Exit:
+                                    cout << endl << "You choose to exit the program\n\n"; break;
+                           case circle::Circum:
+                                    cout << endl
+                                           << "A circle with a radius of "
+                                           << myCircle.radius
+                                           << " has a Circumference of "
+                                           << myCircle.circum << "\n\n"; break;
+                          case circle::Diameter:
+                                     cout << endl
+                                            << "A circle with a radius of "
+                                            << myCircle.radius 
+                                     << " has a diameter of "
+                                     << myCircle.diameter << "\n\n"; break;
+                         case circle::Area:
+                                      cout << endl
+                                             << "A circle with a radius of "
+                                             << myCircle.radius
+                                             << " has an area of "
+                                             << myCircle.area 
+                                             << "\n\n"; break;
+                         default:
+                                      cout << endl << "Not a valid choose!\n\n";
+                 }
+
+                cout << endl << endl << "end of program\n\n";
+         }
+
+return 0;
+
+}

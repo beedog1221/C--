@@ -1,0 +1,43 @@
+// CIS.cpp : main project file.
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>_
+
+using namespace System;
+
+class date
+{
+public:
+	void setDay(char);
+	void getDay(char&);
+	void printDay() const;
+
+private:
+	char day;
+};
+
+int main()
+{
+	date myDate;
+	date yourDate;
+
+	char day = "char";
+
+	myDate.setDay(monday);
+
+	today = myDate.getDay();
+
+	cout << "myDate is " << today << endl << endl;
+	myDate.printDay();
+	cout << endl;
+
+	
+	yourDate.setDay(monday);
+
+	today = yourDate.getDay();
+
+	cout << "myDate is " << today << endl << endl;
+	yourDate.printDay();
+	cout << endl;
+	return 0;

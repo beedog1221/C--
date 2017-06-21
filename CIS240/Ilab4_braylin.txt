@@ -1,0 +1,225 @@
+// CIS.cpp : main project file.
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Time
+{
+public:
+	void setTime(int, int);
+	void getTime(int&, int&);
+	void printTime() const;
+	void incrementMin();
+	void incrementHrs();
+	Time (int, int);
+	Time();
+
+private:
+	int hour;
+	int minute;
+};
+
+
+void Time::setTime(int hours, int minutes)
+{
+	if (0 <= hours && hours < 24)
+		hour = hours;
+	else
+		hour = 0;
+
+	if (0 <= minutes && minutes < 60)
+		minute = minutes;
+	else  minute = 0;
+}
+
+void Time::getTime (int& hours, int& minutes) const
+{
+	hours = hour;
+	minutes = minute;
+}
+
+void Time::incrementHrs()
+{
+	hour++;
+	if (hour > 23)
+		hour = 0;
+}
+
+void Time:: incrementMin()
+{
+	minute++;
+	if (minute > 59)
+	{
+		minute = 0;
+		incrementHrs();
+	}
+}
+
+void Time::printTime() const
+{
+	if (hour < 10)
+		cout << "0";
+	cout << hour << ":";
+
+	if (minute < 10)
+		cout << "0";
+	cout << minute << ":";
+}
+
+Time::Time()
+{
+	hour = 0;
+	minute = 0;
+}
+
+Time::Time(int hours, int minutes)
+{
+	if (0 <= hours && hours < 24)
+		hour = hours;
+	else
+		hour = 0;
+
+	if (0 <= minutes && minutes < 60)
+		minute = minutes;
+	else  minute = 0;
+}
+
+class Date
+{
+public:
+	void setDate(int, int, int);
+	void getDate(int&, int&, int&);
+	void printDate() const;
+	Date (int, int, int);
+	Date();
+
+private:
+	int day;
+	int month;
+	int year
+};
+
+void Date::setDate(int days, int months, int years)
+{
+	if (0 < days && days < 30)
+		day = days;
+	else
+		day = 1;
+
+	if (0 < months && months < 12)
+		month = months;
+	else  month = 1;
+
+	if (0 < years && years < 2011)
+		year = years;
+	else  year = 1;
+}
+
+void Date::getDate (int& days, int& months, int& years) const
+{
+	days = day;
+	months = month;
+	years = year;
+}
+
+void Date::printDate() const
+{
+	if (day < 10)
+		cout << "0";
+	cout << day << "/";
+
+	if (month < 10)
+		cout << "0";
+	cout << month << "/";
+
+	cout << year <<;
+}
+
+Date::Date()
+{
+	day = 1;
+	month = 1;
+	year = 1900;
+}
+
+Date::Date(int days, int months, int years)
+{
+	if (0 < days && days < 30)
+		day = days;
+	else
+		hour = 1;
+
+	if (0 < months && months < 12)
+		month = months;
+	else  month = 1;
+
+	if (0 < years && years < 2011)
+		year = years;
+	else
+		year = 1900;
+}
+
+
+
+
+
+class Event
+{
+public:
+	void setEventData(string eventName2, int hour, int minute, int month, int day, int year);
+	void printEventData() const;
+	Event(string eventName2 = "", int hour = 0, int minute = 0, int month = 1, int day = 1, int year = 1900);
+
+private:
+	string eventName;
+	Time eventTime;
+	Date eventDay
+};
+
+void Event::setEventData(string eventName2, int hour, int minute, int month, int day, int year);
+{
+	string eventName2 = "";
+	Time::setTime();
+	Date::setDate();
+}
+
+void printEventData() const
+{
+	cout << eventName2 << "occurs"
+		 << Time::printTime(); 
+	cout << "at"
+		 << Date::printDate(); 
+	cout << endl;
+}
+
+
+
+
+Event::Event(std::string eventName2 = "", int hour = 0, int minute = 0, int month = 1, int day = 1, int year = 1900)
+{
+	eventName = eventName2
+	eventTime.hour = hour;
+	eventTime.minute = minute;
+	eventDay.day = day;
+	eventDay.month = month;
+	eventDay.year = year;
+}
+
+int main()
+{
+	Event myEvent1(Valentines day, 4, 50, 2, 14, 2009)
+	Event myEvent2(Christmas day, 12, 00, 12, 25, 2010)
+
+	cout <<" myEvent1: ";
+	myEvent1.printEventData();
+	cout << endl;
+
+	cout << " myEvent2: ";
+	myEvent2.printEventData();
+	cout << endl;
+
+	return 0;
+}

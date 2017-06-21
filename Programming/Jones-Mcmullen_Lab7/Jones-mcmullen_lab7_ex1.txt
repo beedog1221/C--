@@ -1,0 +1,74 @@
+/* Specification:
+Braylin Jones-Mcmullen  
+Lab 7 Exercise 1
+This program does Count the letter is a Text file */
+ 
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+const char FileName[] = "c:\\TestCount.txt";
+
+int main () {
+string lineBuffer;
+//open the text file to read
+ifstream inMyStream (FileName); //open my file stream
+
+if (inMyStream.is_open()) 
+{
+	 //initialize variables for linecount, wordcount, etc. 
+	int wordCount = 0;
+	int letterCount = 0;
+	int lineCount = 0;
+	int puncCount = 0;
+
+      
+       //read the text file     // loop - read the file until end of the file is reached 
+       while (!inMyStream.eof() ){
+
+              //get a line of text           // read each line and store in buffer 
+
+              getline (inMyStream, lineBuffer);
+			  lineCount++;
+				//increment linecount
+			  //get the length of the line
+             //read through each letter in the lineBuffer
+			  char punctuation;
+             char oneLetter;
+			 char prev = ' ';
+			 // for loop to read each character of the line
+             for( int n=0; n < lineBuffer.length(); ++n )
+			 {
+                    oneLetter = char( lineBuffer[n] );
+					if (n > 0)
+					prev = char( lineBuffer[n-1]);   //get a letter
+					//increment each counter based on the character read from the line
+					if(oneLetter == ' ' && prev != ' ')
+						wordCount++;
+
+					if(oneLetter >= 'A' && oneLetter <= 'Z')
+						letterCount++;
+					else if(oneLetter >= 'a' && oneLetter <= 'z')
+						letterCount++;
+					if(punctuation == '.' || punctuation == ',' || punctuation == ';')
+						puncCount++
+
+
+
+                    
+			 }//for   //end of for loop 
+			 if (!lineBuffer.length() && oneLetter != ' ')
+				 wordCount++;
+	   }//while    // end of loop 
+
+        inMyStream.close(); //close the file stream
+
+        //display the counts
+		cout << "Word count: " << wordCount << endl;
+		}//if inmystream
+        else cout << "File Error: Open Failed";
+
+       return 0;
+}

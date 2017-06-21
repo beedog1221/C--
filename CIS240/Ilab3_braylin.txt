@@ -1,0 +1,139 @@
+// CIS.cpp : main project file.
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include time.h
+#include timeZone.h
+
+using namespace std;
+
+class clockType
+{
+public:
+	void setTime (int, int);
+	void getTIme (int&, int&,) const;
+	void printTime() const;
+	void incrementMinutes();
+	void incrementHours();
+	clockType();
+	clocktype (int, int ,int);
+
+private:
+	int hr;
+	int min;
+};
+
+void clockType::setTime(int hours, int minutes)
+{
+	if (0 <= hours && hours < 24)
+		hr = hours;
+	else
+		hr = 0;
+
+	if (0 <= minutes && minutes < 60)
+		min = minutes;
+	else  min = 0;
+}
+
+void clockType::getTIme (int& hours, int& minutes) const
+{
+	hours = hr;
+	minutes = min;
+}
+
+void clockType::incrementHours()
+{
+	hr++;
+	if (hr > 23)
+		hr = 0;
+}
+
+void clockType:: incrementMinutes()
+{
+	min++;
+	if (min > 59)
+	{
+		min = 0;
+		incrementHours();
+	}
+}
+
+void clockType::printTime() const
+{
+	if (hr < 10)
+		cout << "0";
+	cout << hr << ":";
+
+	if (min < 10)
+		cout << "0";
+	cout << min << ":";
+}
+
+clockType::clockType()
+{
+	hr = 0;
+	min = 0;
+}
+
+clockType::clockType(int hours, int minutes)
+{
+	if (0 <= hours && hours < 24)
+		hr = hours;
+	else
+		hr = 0;
+
+	if (0 <= minutes && minutes < 60)
+		min = minutes;
+	else  min = 0;
+}
+
+
+
+
+class extTime: public clockType
+{
+public:
+	void setTime (int, int, string);
+	void getTIme (int&, int&, string&) const;
+	void printTime() const;
+	extTime();
+	extTime (int, int ,string);
+
+private:
+	string zone;
+}
+
+
+void extTime::printTime() const
+{
+	clockType::printTime();
+	cout << zone << endl;
+}
+
+int main()
+{
+	clockType myClock1;
+	clockType myClock2(6, 24);
+
+	extTime zone1;
+	extTime zone2(9, 30, eastern);
+
+	cout << " myClock1: ";
+	myClock1.printTime();
+	cout<< endl;
+
+	cout << " myClock2: ";
+	myClock2.printTime;
+	cout<< endl;
+
+	cout << "zone1: ";
+	zone1.printTime();
+	cout << endl;
+
+	cout << "zone2: ";
+	zone2.printTime();
+	cout << endl;
+
+	return 0;
+}

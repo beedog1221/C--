@@ -1,0 +1,98 @@
+/*specification: Create a box class and explore how to reference its methods and properties */ 
+#include <iostream>
+using namespace std;
+
+class BoxClass {
+private:
+     //properties
+     int theLength;
+     int theHeight;
+     int theWidth;
+     int volumeOfContents;
+public:
+     //properties
+     int color;
+
+     //constructor prototypes
+     BoxClass(int);
+     BoxClass(int, int, int);
+
+     //member functions prototypes
+     int boxVolume(void);
+     bool addToContents(int);
+     bool isFull(void);
+     int spaceLeft(void);
+     int getVolumeOfContents(void);
+};
+
+int main (void){
+     //instantiate two boxes
+     BoxClass box1(20,30,10);
+     BoxClass box2(5);
+
+     //add 'stuff' to box1
+     box1.addToContents(5000);
+
+     //output some facts about box one
+     cout << "box one had this much volume left " << box1.spaceLeft() << endl;
+     cout << "is box one full? " << box1.isFull() << endl;
+     cout << "Total volume of box one is " << box1.boxVolume() << endl;
+     cout << "What is the volume of the contents? " << box1.getVolumeOfContents() << endl;
+
+     //output some facts about box two
+     cout << "Box two had this much volume left " << box2.spaceLeft() << endl;
+     cout << "Is box two full? " << box2.isFull() << endl;
+     cout << "Total volume of box two is " << box2.boxVolume() << endl;
+     cout << "What is the volume of the contents? " << box2.getVolumeOfContents() << endl;
+    return 0;
+}
+
+BoxClass::BoxClass(int sideOfSquare){
+     //constructor, will create a square box 
+     theLength = sideOfSquare;
+     theHeight = sideOfSquare;
+     theWidth = sideOfSquare;
+     volumeOfContents = 0;
+}
+
+BoxClass::BoxClass(int Len, int Width, int Height){
+      //constructor, will create a box 
+     theLength = Len;
+     theHeight = Width;
+     theWidth = Height;
+     volumeOfContents = 0;
+}
+
+int BoxClass::boxVolume(void){
+     //calculate the boxes' volume
+     return theLength * theWidth * theHeight;
+}
+
+bool BoxClass::addToContents(int amtToAdd){
+     //fill the box with a particular volume of material
+     //return true if successful, false if not successful
+     bool Added = false;
+     if (amtToAdd + volumeOfContents <= boxVolume()){
+          volumeOfContents += amtToAdd;
+          Added = true;
+     }
+     return Added;
+}
+
+bool BoxClass::isFull(void){
+     //return true if the box is full, false if not full
+     bool full = false;
+     if (boxVolume() == volumeOfContents)
+          full = true;
+     return full;
+}
+
+int BoxClass::spaceLeft(void){
+     //calculate the volume left in the box
+     return boxVolume() - volumeOfContents;
+}
+
+int BoxClass::getVolumeOfContents(void){
+     //return the volume of the items in the box
+     return volumeOfContents;
+}

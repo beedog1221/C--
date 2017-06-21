@@ -1,0 +1,110 @@
+// CIS.cpp : main project file.
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class RacingData
+{
+public:
+	void setStat(string, int, int, int);
+	void getStat(string&, int&, int&, int&);
+	void printStat() const;
+	RacingData();
+	RacingData(string, int, int, int);
+
+private:
+	string name;
+	int score;
+	int minute;
+	int second;
+};
+
+void RacingData::setStat(string nme, int scr, int min, int sec)
+{
+	name = nme;
+
+	if (0 < scr)
+		score = scr;
+	else
+		score = 0;
+
+	if (0 <= min && min < 60)
+		minute = min;
+	else  minute = 0;
+
+	if (0 <= sec && sec < 60)
+		second = sec;
+	else  second = 0;
+}
+
+void RacingData::getStat(string& nme, int& scr, int& min, int& sec}
+{
+	nme = name;
+	scr = score;
+	min = minute;
+	sec = second;
+}
+
+void RacingData::printStat() const
+{
+	cout << nme << "'s averaged a score of "
+		<< scr << " in " << min << " minutes and "
+		<< sec << " seconds.";
+}
+
+RacingData::RacingData()
+{
+	name = name;
+	score = 0;
+	minute = 0;
+	second = 0;
+}
+RacingData::RacingData(string nme, int scr, int min, int sec)
+{
+	name = nme;
+
+	if (0 < scr)
+		score = scr;
+	else
+		score = 0;
+
+	if (0 <= min && min < 60)
+		minute = min;
+	else  minute = 0;
+
+	if (0 <= sec && sec < 60)
+		second = sec;
+	else  second = 0;
+}
+
+int main()
+{
+	RacingData racer1(Patrick, 185, 11, 20);
+	RacingData racer2(Patrick, 103, 11, 30);
+	RacingData racer3(Patrick, 73, 12, 40);
+	RacingData racer4;
+	RacingData racer5(Gordon, 155, 10, 10);
+	RacingData racer6(Gordon, 127, 11, 15);
+	RacingData racer7(Gordon, 34, 12, 35);
+	RacingData racer8;
+
+	racer4 = (racer1 + racer2 + racer3) / 3;
+
+
+	racer8 = (racer5 + racer6 + racer7) / 3;
+	
+	racer4.printStat();
+
+	racer8.printStat();
+
+	if(racer4(score) > racer8)
+		cout << "the performer with the highest score was Patrick";
+	else
+		cout << "the performer with the highest score was Gordon";
+
+
+	return 0;
+}

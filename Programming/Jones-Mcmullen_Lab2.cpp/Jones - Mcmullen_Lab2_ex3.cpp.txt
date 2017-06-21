@@ -1,0 +1,46 @@
+/* Specification:
+First Name Last Name  
+Lab 2 Exercise 3
+This program Converter  */
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	enum conv ( H = 1, S = 2);
+	int hour = 60;
+	int sec = 60;
+	int min = 0;
+	int answer1 = 0;
+	int answer2 = 0;
+	
+	//display the menu
+	cout << "enter number of minuts ";
+	cin >> min;
+	cout << "choose conversion\n";
+	cout << H << " - Hours\n";
+	cout << S << " - Seconds\n";
+	cout << "Enter a number to represent the day of the week: ";
+	//user enters choice
+	int userChoice = 0;
+	cin >> userChoice ;
+	
+	switch (userChoice)
+	{
+		case H: 
+			answer1 = min / hour;
+			answer2 = min % hour;
+			cout << "there are " << answer1 << "hours and " << answer2 << "minutes in " << min << "minutes"; break;
+		case S:
+			answer1 = min * sec;
+			cout << "there are " << answer1 << "seconds in " << min << "minutes"; break;
+	default:
+	cout << " invalid conversion";
+	}
+	cout << endl;
+
+	return 0; 
+
+}

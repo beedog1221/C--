@@ -1,0 +1,75 @@
+/* week 3's walkthrough:  Demonstrates the three primary loop types*/ 
+#include <iostream> 
+
+using namespace std;
+
+int main(void) {
+      int startNumber = 0;
+      int lastNumber = 0;
+
+      cout << "Print a Range of Numbers\n"
+            << "Enter the starting number: ";
+
+      cin >> startNumber;
+      cout << endl;
+      cout << "Enter the last number: ";
+      cin >> lastNumber;
+      cout << endl;
+
+      //demonstrate while loop
+      int counter = 0;
+      int accumulator = 0;
+      int sentinelValue = lastNumber;
+      int loopControlVariable = startNumber; //prime the loop
+      cout << "While loop...\n";
+
+      while (loopControlVariable <= sentinelValue){
+            cout << loopControlVariable << " ";
+             counter = counter + 1;
+            accumulator = accumulator + loopControlVariable;
+            loopControlVariable++;
+      }
+
+      cout << "\nThe while loop printed  " 
+             << counter << " numbers "
+             << "that sum to " << accumulator << endl << endl;
+
+      //demonstrate for loop
+      //reset the variables
+      cout << endl;
+      counter = 0;
+      accumulator = 0;
+      cout << "For loop...\n";
+
+      for (int i = startNumber; i <= lastNumber ; i++ ){
+            cout << i << " ";
+            counter = counter + 1;
+            accumulator = accumulator + i;
+      }
+
+      cout << "\nThe For loop printed  " 
+             << counter << " numbers "
+             << "that sum to " << accumulator << endl << endl;
+
+      //demonstrate do until loop
+      //reset variables
+      counter = 0;
+      accumulator = 0;
+      sentinelValue = lastNumber;
+      loopControlVariable = startNumber; //prime the loop
+      cout << "do While...\n";
+     
+      do {
+            cout << loopControlVariable << " ";
+            counter = counter + 1;
+            accumulator = accumulator + loopControlVariable;
+            loopControlVariable++;
+      }while (loopControlVariable <= sentinelValue);
+
+    cout << "\n The do while loop printed  " 
+             << counter << " numbers "
+            << "that sum to " << accumulator << endl << endl;
+
+return 0;
+
+}

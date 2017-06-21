@@ -1,0 +1,30 @@
+
+simple markov chains name generator
+
+source data:
+http://www.census.gov/genealogy/names/dist.female.first
+http://www.census.gov/genealogy/names/dist.male.first
+
+restricted to case insensitive alphabet characters
+to limit memory size to sizeof(double)*27^3 ~= 157K
+
+otherwise should consider sparse matrix representation
+
+# cd markov_press
+# g++ test.cpp
+# ./a.out
+gert
+tert
+kevid
+darle
+ken
+rey
+scotthowark
+ken
+ken
+grey
+
+source:
+http://www.fourteenminutes.com/fun/names/
+http://en.wikipedia.org/wiki/Examples_of_Markov_chains
+

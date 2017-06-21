@@ -1,0 +1,143 @@
+/* Specification:
+First Name Last Name  
+Lab 7 Exercise 3
+This program does Append and display records in a address database */
+
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+void menu(void);
+void writeData(void);
+void readData(void);
+string * split(string, char);
+
+const char FileName[] = "c:/TestAddress.txt";
+
+int main () {
+        menu();
+        return 0;
+} //end main
+
+void menu(void) {
+//allow user to choose to append records, display records or exit the program
+	char choice;
+	char again;
+	cout << "(A)ppen Records, (S)how Records, (E)xit " << endl;
+	cin >> choice
+	cout << endl << endl;
+
+	do while((!choice == 'E') || (!choice == 'e'))
+		switch(choice)
+	{
+		case 'A':
+			writeData();break;
+		case 'a':
+			writeData();break;
+		case 'S':
+			readData();break;
+		case 's':
+			readData();break;
+		default:
+			cout << "wrong input";break;
+
+		cout << " run again? ";
+		cin >> again;
+
+	}while((again == 'Y' || (again == 'y'));
+};
+
+
+
+
+}//end menu
+
+void writeData(void){
+//Write the Address Info to a file
+	string name;
+	string street;
+	string city;
+	string state;
+	string zip;
+	char redo;
+	ofstream outFileObj("c:\\test.txt",ios::app)
+	do {
+		cout << "Name.......";
+		getline(outFileObj, name);
+		cout << endl;
+		cout << "Street.......";
+		getline(outFileObj, street);
+		cout << endl;
+		cout << "City.......";
+		getline(outFileObj, city);
+		cout << endl;
+		cout << "State.......";
+		getline(outFileObj, state);
+		cout << endl;
+		cout << "Zip Code.......";
+		getline(outFileObj, zip);
+
+		if(outFileObj.is_open(){
+			OutFileObj << name << ", " << street << ", " << endl;
+			OutFileObj << city << ", " << state << ", " << zip << endl;
+			outFileObj.close();
+		}
+		else cout << "File Error: Open Failed";
+		return 0;
+	
+		cout << "Enter another Record? (Y/N) "
+		cin >> redo;
+	}while ((redo == 'y') || (redo == 'Y'));
+
+
+
+
+
+}//end write data
+
+void readData(void){
+//read data from a file
+//use the split function to break a
+//deliminated line of text into fields
+
+}//end read data
+
+string * split(string theLine, char theDeliminator){
+        //Break theline into fields and save the fields to an array.
+        //Each field will occupy one element in a character array.
+        //theLine is a string with fields separated with theDeliminator character.
+        //Assumes the last field in the string is terminated with a newline.
+        //Useage: string *theFields = split(lineBuffer, ',');
+
+        //determine how many splits there will be so we can size our array
+        int splitCount = 0;
+        for(int i = 0; i < theLine.size(); i++){
+                if (theLine[i] == theDeliminator)
+                         splitCount++;
+        }
+        splitCount++; //add one more to the count because there is not an ending comma 
+
+        //create an array to hold the fields
+        string* theFieldArray;
+        theFieldArray = new string[splitCount];
+
+        //split the string into seperate fields
+        string theField = "";
+        int commaCount = 0;
+
+        for(int i = 0; i < theLine.size(); i++){ //read each character and look for the deliminator
+               if (theLine[i] != theDeliminator) {
+                       theField += theLine[i]; //build the field
+               }
+              else { //the deliminator was hit so save to the field to the array
+                       theFieldArray[commaCount] = theField; //save the field to the array
+                       theField = "";
+                       commaCount++;
+              }
+        }
+        theFieldArray[commaCount] = theField; //the last field is not marked with a comma...
+
+        return theFieldArray;
+} //end split

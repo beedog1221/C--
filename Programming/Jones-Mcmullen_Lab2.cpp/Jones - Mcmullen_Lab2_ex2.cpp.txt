@@ -1,0 +1,54 @@
+/* Specification:
+First Name Last Name  
+Lab 2 Exercise 2
+This program Calculator  */
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	double number1 = 0.0;
+	double number2 = 0.0;
+	double answer = 0.0;
+	char choice = ' ';
+
+
+	//enter input data
+	cout << "enter first number: ";
+	cin >> number1;
+	cout << "enter second number: ";
+	cin >> number2;
+	
+	cout << " choose formula\n ";
+	cout << " A - addition\n ";
+	cout << " B - subtraction\n ";
+	cout << " C - Multiplication\n ";
+	cout << " D - division\n ";
+	cin >> choice;
+	choice = toupper(choice);
+
+	switch (choice)
+	{
+	case 'A':
+			answer = number1 + number2;
+			break;
+	case 'B':
+			answer = number1 - number2;
+			break;
+	case 'C':
+			answer = number1 * number2;
+			break;
+	case 'D':
+			answer = number1 / number2;
+			break;
+	default:
+			cout << "Input error" << endl;
+	}		//end switch
+	
+	cout << "Your answer is " << answer << endl;
+
+return 0;
+
+}
